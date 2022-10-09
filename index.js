@@ -41,16 +41,13 @@ rejectButton.addEventListener("click", (e) => {
   result = prompt("What color is it?");
   setBackgroud(dataset, result);
   net.train([{ input: dataset, output: { [result]: 1 } }]);
+  console.log(net.toJSON());
 
   toggleForm();
 });
 
 function testDataset() {
-  dataset = {
-    hue: hueInput.value / 360,
-    saturation: saturationInput.value / 100,
-    lightness: lightnessInput.value / 100,
-  };
+  dataset = getDataset()
 
   result = brain.likely(dataset, net);
   setBackgroud(dataset, result);
@@ -62,8 +59,15 @@ function toggleForm() {
 }
 
 function setBackgroud() {
-  block1.style.backgroundColor = `hsl(${dataset.hue * 360}, ${
-    dataset.saturation * 100
-  }%, ${dataset.lightness * 100}%)`;
+  block1.style.backgroundColor = `hsl(${dataset.hue * 360}, ${dataset.saturation * 100
+    }%, ${dataset.lightness * 100}%)`;
   block2.style.backgroundColor = result;
+}
+
+function getDataset() {
+  return {
+    hue: hueInput.value / 360,
+    saturation: saturationInput.value / 100,
+    lightness: lightnessInput.value / 100,
+  };
 }
