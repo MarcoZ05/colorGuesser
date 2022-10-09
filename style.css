@@ -20,7 +20,7 @@ body {
   height: 100vh;
 }
 
-#colorForm {
+form {
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -38,14 +38,14 @@ body {
   justify-content: space-between;
 }
 
-#colorForm h1 {
+form h1 {
   margin: 0;
   padding: 0;
   color: #333;
   text-align: center;
 }
 
-#colorForm input {
+form input {
   height: 40px;
   font-size: 25px;
   border: none;
@@ -53,29 +53,11 @@ body {
   border-bottom: 1px solid #333;
 }
 
-#colorForm input[type="submit"] {
+form input[type="submit"] {
   background: #333;
   color: #fff;
   cursor: pointer;
   border-radius: 5px;
-}
-
-#trainForm {
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 #trainForm h1 {

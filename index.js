@@ -13,6 +13,9 @@ const trainForm = document.getElementById("trainForm");
 const acceptButton = document.getElementById("accept");
 const rejectButton = document.getElementById("reject");
 
+const colorInputForm = document.getElementById("colorInput");
+const colorInput = document.getElementById("color");
+
 // init neural network
 var net = new brain.NeuralNetwork();
 
@@ -29,7 +32,9 @@ colorForm.addEventListener("submit", (e) => {
   net.train(externData);
 
   testDataset();
-  toggleForm();
+
+  colorForm.classList.toggle("hidden");
+  trainForm.classList.toggle("hidden");
 });
 
 acceptButton.addEventListener("click", (e) => {
@@ -37,18 +42,27 @@ acceptButton.addEventListener("click", (e) => {
 
   trainingData.push({ input: dataset, output: { [result]: 1 } });
 
-  toggleForm();
+  colorForm.classList.toggle("hidden");
+  trainForm.classList.toggle("hidden");
 });
 
 rejectButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  result = prompt("What color is it?");
+  colorInputForm.classList.toggle("hidden");
+  trainForm.classList.toggle("hidden");
+});
+
+colorInputForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  result = colorInput.value.trim();
   setBackgroud(dataset, result);
 
   trainingData.push({ input: dataset, output: { [result]: 1 } });
 
-  toggleForm();
+  colorInputForm.classList.toggle("hidden");
+  colorForm.classList.toggle("hidden");
 });
 
 function testDataset() {
@@ -58,11 +72,6 @@ function testDataset() {
   setBackgroud(dataset, result);
 
   net = new brain.NeuralNetwork();
-}
-
-function toggleForm() {
-  colorForm.classList.toggle("hidden");
-  trainForm.classList.toggle("hidden");
 }
 
 function setBackgroud() {
