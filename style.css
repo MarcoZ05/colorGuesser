@@ -1,5 +1,5 @@
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   margin: 0;
 }
@@ -8,16 +8,18 @@ body {
   transition: all 0.25s;
 }
 
-#block1 {
-  z-index: 0;
-  width: 50vw;
-  height: 100vh;
-}
-
+#block1,
 #block2 {
   z-index: 0;
   width: 50vw;
   height: 100vh;
+  text-transform: uppercase;
+  font-size: 2em;
+  -webkit-text-stroke: 1px white;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 form {
@@ -53,7 +55,7 @@ form input {
   border-bottom: 1px solid #333;
 }
 
-form input[type="submit"] {
+form input[type='submit'] {
   background: #333;
   color: #fff;
   cursor: pointer;
