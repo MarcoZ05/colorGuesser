@@ -56,6 +56,11 @@ rejectButton.addEventListener("click", (e) => {
 colorInputForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  if (!Colors.containes(colorInput.value))
+    return
+
+  colorInput.value = ""
+
   result = colorInput.value.trim();
   setBackgroud(dataset, result);
 
@@ -75,9 +80,8 @@ function testDataset() {
 }
 
 function setBackgroud() {
-  block1.style.backgroundColor = `hsl(${dataset.hue * 360}, ${
-    dataset.saturation * 100
-  }%, ${dataset.lightness * 100}%)`;
+  block1.style.backgroundColor = `hsl(${dataset.hue * 360}, ${dataset.saturation * 100
+    }%, ${dataset.lightness * 100}%)`;
   block2.style.backgroundColor = result;
 }
 
