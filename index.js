@@ -56,16 +56,16 @@ rejectButton.addEventListener("click", (e) => {
 colorInputForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (!Colors.containes(colorInput.value))
-    return
+  // if (!(Colors.containes(colorInput.value) && colorInput.value !== ""))
+  //   return
 
-  colorInput.value = ""
 
   result = colorInput.value.trim();
   setBackgroud(dataset, result);
 
   trainingData.push({ input: dataset, output: { [result]: 1 } });
 
+  colorInput.value = ""
   colorInputForm.classList.toggle("hidden");
   colorForm.classList.toggle("hidden");
 });
